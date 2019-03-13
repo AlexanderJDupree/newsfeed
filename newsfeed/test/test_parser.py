@@ -9,7 +9,7 @@ Author: Alexander DuPree
 import unittest
 import argparse
 
-from newsfeed.helpers import parser
+from helpers import parser
 
 class TestMainParser(unittest.TestCase):
 
