@@ -1,10 +1,11 @@
-FROM python:3
+FROM python:3.7-slim
 
 WORKDIR /app
 
 COPY . /app
 
+ARG VER=0.0.1
+
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
-CMD ["python", "newsfeed/newsfeed.py"]
-
+ENTRYPOINT ["python", "newsfeed/newsfeed"]

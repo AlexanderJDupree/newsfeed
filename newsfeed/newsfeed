@@ -1,0 +1,22 @@
+#!/usr/bin/python
+'''
+usage: newsfeed.py [-h] [-t] [-c]
+
+Get your news without having to leave the terminal!
+
+optional arguments:
+  -h, --help       show this help message and exit
+  -t , --top       Display top <N> stories
+  -c , --country   Filter news by <COUNTRY>
+
+'''
+
+from os import sys
+from helpers import parser
+
+def main(argv):
+
+    print(parser.parse(argv))
+
+if __name__ == '__main__':
+    main(sys.argv[1:])
