@@ -16,7 +16,7 @@ def validateInteger(string):
         raise argparse.ArgumentTypeError(
                 '{} is not within range 1..100'.format(string)
                 )
-    return value
+    return string
 
 def parse(argv):
 
@@ -28,7 +28,7 @@ def parse(argv):
             '-t', '--top', 
             type=validateInteger, 
             metavar='',
-            default=10,
+            default='10',
             help='Display top <N> stories. Range 1 - 100'
             )
     parser.add_argument(
