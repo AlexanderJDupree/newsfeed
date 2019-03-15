@@ -1,6 +1,6 @@
 '''
 
-File: parser.py
+File: commandParser.py
 
 Brief: Parses command line args into a dict object and validates input
 
@@ -47,8 +47,8 @@ def parse(argv):
             metavar='',
             help="Filter news within a specified <CATEGORY>"
             )
-    parser.add_argument(
-            '-s', '--source',
+    parser.add_argument( # TODO make sources accept variable number of args
+            '-s', '--sources',
             metavar='',
             help="Specify a <SOURCE> for news. I.E. cnn, bbc-news"
             )

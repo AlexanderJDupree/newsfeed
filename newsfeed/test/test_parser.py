@@ -9,12 +9,12 @@ Author: Alexander DuPree
 import unittest
 import argparse
 
-from helpers import parser
+from helpers import commandParser as parser
 
 class TestMainParser(unittest.TestCase):
 
     ''' Command line options '''
-    options = ['top', 'country', 'keyword', 'category', 'source']
+    options = ['top', 'country', 'keyword', 'category', 'sources']
     longopts = [ '{}{}'.format('--', option) for option in options ]
 
     ''' Default options are to display top 10 US Stories'''
