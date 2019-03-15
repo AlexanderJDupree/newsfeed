@@ -30,12 +30,6 @@ class URL:
         self.url = self.origin + self.endpoint + self.query
         return
 
-    def __eq__(self, other):
-        return self.url == other
-
-    def __hash__(self):
-        return hash(self.url)
-
     def __encodeQuery(self, query):
         ''' Converts query dict object into a query string  '''
         self.__validateQuery(query)
@@ -56,4 +50,19 @@ class URL:
             if key in alias:
                 alias[self.aliases[key]] = alias.pop(key)
         return alias
+
+    def __repr__(self):
+        return self.url
+
+    def __str__(self):
+        return self.url
+
+    def __eq__(self, other):
+        return self.url == other
+
+    def __lt__(self, other):
+        return self.url < other
+
+    def __hash__(self):
+        return hash(self.url)
 

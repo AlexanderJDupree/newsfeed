@@ -13,10 +13,20 @@ optional arguments:
 
 from os import sys
 from helpers import commandParser
+from helpers.urlBuilder import URL
 
 def main(argv):
 
-    print(commandParser.parse(argv))
+    NEWS_API      = "https://newsapi.org/v2/"
+    TOP_HEADLINES = "top-headlines?"
+
+    aliases = { 'keyword' : 'q', 'top' : 'pageSize' }
+
+    query = commandParser.parse(argv)
+    url = URL(NEWS_API, TOP_HEADLINES, query=query, aliases=aliases)
+
+    print(query)
+    print(url.url)
 
 if __name__ == '__main__':
     main(sys.argv[1:])
