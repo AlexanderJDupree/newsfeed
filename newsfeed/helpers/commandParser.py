@@ -1,6 +1,6 @@
 '''
 
-File: parser.py
+File: commandParser.py
 
 Brief: Parses command line args into a dict object and validates input
 
@@ -16,7 +16,7 @@ def validateInteger(string):
         raise argparse.ArgumentTypeError(
                 '{} is not within range 1..100'.format(string)
                 )
-    return value
+    return string
 
 def parse(argv):
 
@@ -28,7 +28,7 @@ def parse(argv):
             '-t', '--top', 
             type=validateInteger, 
             metavar='',
-            default=10,
+            default='10',
             help='Display top <N> stories. Range 1 - 100'
             )
     parser.add_argument(
@@ -47,8 +47,8 @@ def parse(argv):
             metavar='',
             help="Filter news within a specified <CATEGORY>"
             )
-    parser.add_argument(
-            '-s', '--source',
+    parser.add_argument( # TODO make sources accept variable number of args
+            '-s', '--sources',
             metavar='',
             help="Specify a <SOURCE> for news. I.E. cnn, bbc-news"
             )

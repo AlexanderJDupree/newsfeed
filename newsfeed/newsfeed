@@ -12,11 +12,11 @@ optional arguments:
 '''
 
 from os import sys
-from helpers import parser
+from helpers import commandParser
 
 def main(argv):
 
-    print(parser.parse(argv))
+    print(commandParser.parse(argv))
 
 if __name__ == '__main__':
     main(sys.argv[1:])
