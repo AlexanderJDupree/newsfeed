@@ -22,7 +22,10 @@ class NewsAPI:
 
     @classmethod
     def request(cls, query):
-        url = URL(cls.NEWS_API, cls.TOP_HEADLINES, query=query, aliases=cls.ALIASES)
+        url = URL(
+                cls.NEWS_API, cls.TOP_HEADLINES, 
+                query=query, aliases=cls.ALIASES
+                )
         url.append({'apiKey' : cls.API_KEY})
 
         response = requests.get(url)

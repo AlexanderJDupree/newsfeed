@@ -17,20 +17,17 @@ optional arguments:
 from os import sys
 from helpers import commandParser
 from helpers.urlBuilder import URL
+from helpers.newsAPI import NewsAPI
 
 def main(argv):
 
-    API_KEY       = "APIKEY"
-    NEWS_API      = "https://newsapi.org/v2/"
-    TOP_HEADLINES = "top-headlines?"
-
-    aliases = { 'keyword' : 'q', 'top' : 'pageSize' }
-
     query = commandParser.parse(argv)
-    url = URL(NEWS_API, TOP_HEADLINES, query=query, aliases=aliases)
+
+    response = NewsAPI.request(query)
 
     print(query)
-    print(url)
+    print("News API response: {}".format(response['status']))
+
 
 if __name__ == '__main__':
     main(sys.argv[1:])

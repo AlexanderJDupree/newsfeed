@@ -30,6 +30,7 @@ class URL:
         self.url = self.origin + self.endpoint + self.query
         return
 
+    # TODO D.R.Y. Violation from encode method
     def append(self, query):
         ''' Appends query to current query '''
         self.query += '&' + self.__encodeQuery(query) if query else ''
