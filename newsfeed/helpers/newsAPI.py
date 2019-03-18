@@ -1,0 +1,28 @@
+'''
+File: newsApi.py
+
+Brief: newsAPI.py handls https requests to the News API server and returns a 
+       json object on successfull requests
+
+Author: Alexander DuPree
+
+'''
+
+import requests
+
+class NewsAPI:
+
+    API_KEY       = "APIKEY"
+    NEWS_API      = "https://newsapi.org/v2/"
+    TOP_HEADLINES = "top-headlines?"
+
+    ALIASES = { 'keyword' : 'q', 'top' : 'pageSize' }
+
+    @classmethod
+    def request(cls, query):
+        url = URL(cls.NEWS_API, cls.TOP_HEADLINES, query=query, aliases=cls.ALIASES)
+        return 
+
+
+
+

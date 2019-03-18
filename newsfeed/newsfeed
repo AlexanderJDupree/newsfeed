@@ -8,6 +8,9 @@ optional arguments:
   -h, --help       show this help message and exit
   -t , --top       Display top <N> stories
   -c , --country   Filter news by <COUNTRY>
+  -k , --keyword   Filter news for a specified <KEYWORD>
+  -C , --category  Filter news within a specified <CATEGORY>
+  -s , --sources   Specify a <SOURCE> for news. I.E. cnn, bbc-news
 
 '''
 
@@ -17,6 +20,7 @@ from helpers.urlBuilder import URL
 
 def main(argv):
 
+    API_KEY       = "APIKEY"
     NEWS_API      = "https://newsapi.org/v2/"
     TOP_HEADLINES = "top-headlines?"
 
@@ -26,7 +30,7 @@ def main(argv):
     url = URL(NEWS_API, TOP_HEADLINES, query=query, aliases=aliases)
 
     print(query)
-    print(url.url)
+    print(url)
 
 if __name__ == '__main__':
     main(sys.argv[1:])

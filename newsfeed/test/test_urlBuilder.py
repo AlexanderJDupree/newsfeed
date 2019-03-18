@@ -22,13 +22,11 @@ class TestURLString(unittest.TestCase):
     required = ['apiKey']
 
 
-    ''' URL requires origin, endpoint, and apikey values '''
+    ''' URL requires origin, endpoint, and anything specified in required '''
     def testRequiredSegments(self):
-        query = dict.fromkeys(self.keys)
-
+        query = {'missing': 'required', 'segments' : 'fails'}
         url = URL(self.origin, self.headline_endpoint, required=['apiKey'])
-        with self.assertRaises(ValueError):
-            url.encode(query)
+        self.assertRaises(Exception, url.encode, query)
 
 
     ''' Sample valid News API query '''
