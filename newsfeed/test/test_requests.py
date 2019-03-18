@@ -24,12 +24,12 @@ class TestRequests(unittest.TestCase):
         r = requests.get(self.news_url + "apiKey=APIKEY")
         self.assertEqual(r.status_code, 401)
 
-'''
     def testValidNewsRequest(self):
-        response = NewsApi.request(url)
-        self.assertEqual(response['status'], 'ok')
 
-'''
+        query = { 'top': '10', 'country': 'us' }
+
+        response = NewsAPI.request(query)
+        self.assertEqual(response['status'], 'ok')
 
 if __name__ == '__main__':
     unittest.main()

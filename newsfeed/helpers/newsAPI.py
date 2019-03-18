@@ -1,7 +1,7 @@
 '''
 File: newsApi.py
 
-Brief: newsAPI.py handls https requests to the News API server and returns a 
+Brief: newsAPI.py handles https requests to the News API server and returns a 
        json object on successfull requests
 
 Author: Alexander DuPree
@@ -9,10 +9,12 @@ Author: Alexander DuPree
 '''
 
 import requests
+from helpers import secret
+from helpers.urlBuilder import URL
 
 class NewsAPI:
 
-    API_KEY       = "APIKEY"
+    API_KEY       = secret.NEWS_API_KEY
     NEWS_API      = "https://newsapi.org/v2/"
     TOP_HEADLINES = "top-headlines?"
 
@@ -21,8 +23,9 @@ class NewsAPI:
     @classmethod
     def request(cls, query):
         url = URL(cls.NEWS_API, cls.TOP_HEADLINES, query=query, aliases=cls.ALIASES)
-        return 
+        url.append({'apiKey' : cls.API_KEY})
 
+        response = requests.get(url)
 
-
+        return response.json()
 
