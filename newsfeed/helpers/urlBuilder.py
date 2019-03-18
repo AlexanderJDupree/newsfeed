@@ -32,7 +32,9 @@ class URL:
 
     def append(self, query):
         ''' Appends query to current query '''
-        self.__validateQuery(query)
+        self.query += '&' + self.__encodeQuery(query) if query else ''
+        self.url = self.origin + self.endpoint + self.query
+        return
 
     def __encodeQuery(self, query):
         ''' Converts query dict object into a query string  '''
