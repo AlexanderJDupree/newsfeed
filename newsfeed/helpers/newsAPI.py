@@ -8,13 +8,13 @@ Author: Alexander DuPree
 
 '''
 
+import os
 import requests
-from helpers import secret
 from helpers.urlBuilder import URL
 
 class NewsAPI:
 
-    API_KEY       = secret.NEWS_API_KEY
+    API_KEY       = os.environ['NEWS_API_KEY']
     NEWS_API      = "https://newsapi.org/v2/"
     TOP_HEADLINES = "top-headlines?"
 
