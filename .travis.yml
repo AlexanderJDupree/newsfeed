@@ -4,7 +4,6 @@ services:
     - docker
 
 before_install:
-    - git-crypt unlock
     - docker build -t newsfeed .
 
 script:
