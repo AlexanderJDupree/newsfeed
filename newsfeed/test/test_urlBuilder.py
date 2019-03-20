@@ -22,13 +22,11 @@ class TestURLString(unittest.TestCase):
     required = ['apiKey']
 
 
-    ''' URL requires origin, endpoint, and apikey values '''
+    ''' URL requires origin, endpoint, and anything specified in required '''
     def testRequiredSegments(self):
-        query = dict.fromkeys(self.keys)
-
+        query = {'missing': 'required', 'segments' : 'fails'}
         url = URL(self.origin, self.headline_endpoint, required=['apiKey'])
-        with self.assertRaises(ValueError):
-            url.encode(query)
+        self.assertRaises(ValueError, url.encode, query)
 
 
     ''' Sample valid News API query '''
@@ -64,6 +62,27 @@ class TestURLString(unittest.TestCase):
 
         url = URL(self.origin, self.headline_endpoint, query=query, aliases=self.aliases)
         self.assertEqual(url.url, expectedURL)
+
+    ''' Appending query segments to constructed URL '''
+    def testURLAppend(self):
+        payload = ['us', 'harambe', 'business']
+
+        query = dict(zip(self.keys, payload))
+
+        expectedURL = (
+                'https://newsapi.org/v2/top-headlines?'
+                'country=us&'
+                'category=business&'
+                'q=harambe&'
+                'apiKey=API_KEY'
+                )
+
+        url = URL(self.origin, self.headline_endpoint, query=query, aliases=self.aliases)
+        url.append({'apiKey' : 'API_KEY'})
+        self.assertEqual(url, expectedURL)
+        return
+
+
 
 if __name__ == '__main__':
     unittest.main()

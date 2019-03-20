@@ -47,6 +47,7 @@ def parse(argv):
             metavar='',
             help="Filter news within a specified <CATEGORY>"
             )
+    # TODO News API requires sources endpoint to be standalone. Cant mix
     parser.add_argument( # TODO make sources accept variable number of args
             '-s', '--sources',
             metavar='',

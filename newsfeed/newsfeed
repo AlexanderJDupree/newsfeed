@@ -8,25 +8,28 @@ optional arguments:
   -h, --help       show this help message and exit
   -t , --top       Display top <N> stories
   -c , --country   Filter news by <COUNTRY>
+  -k , --keyword   Filter news for a specified <KEYWORD>
+  -C , --category  Filter news within a specified <CATEGORY>
+  -s , --sources   Specify a <SOURCE> for news. I.E. cnn, bbc-news
 
 '''
 
 from os import sys
 from helpers import commandParser
 from helpers.urlBuilder import URL
+from helpers.newsAPI import NewsAPI
 
 def main(argv):
 
-    NEWS_API      = "https://newsapi.org/v2/"
-    TOP_HEADLINES = "top-headlines?"
-
-    aliases = { 'keyword' : 'q', 'top' : 'pageSize' }
-
     query = commandParser.parse(argv)
-    url = URL(NEWS_API, TOP_HEADLINES, query=query, aliases=aliases)
+
+    response = NewsAPI.request(query)
 
     print(query)
-    print(url.url)
+    print("News API response: {}".format(response['status']))
+    if response['status'] == 'ok':
+        for article in response['articles']:
+            print("\nTitle: {}".format(article['title']))
 
 if __name__ == '__main__':
     main(sys.argv[1:])

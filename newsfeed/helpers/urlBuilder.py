@@ -26,7 +26,14 @@ class URL:
 
     def encode(self, query):
         ''' Constructs the URL string '''
-        self.query = self.__encodeQuery(query)
+        self.query = self.__encodeQuery(query) if query else ''
+        self.url = self.origin + self.endpoint + self.query
+        return
+
+    # TODO D.R.Y. Violation from encode method
+    def append(self, query):
+        ''' Appends query to current query '''
+        self.query += '&' + self.__encodeQuery(query) if query else ''
         self.url = self.origin + self.endpoint + self.query
         return
 
@@ -38,8 +45,8 @@ class URL:
         
     def __validateQuery(self, query):
         for key in self.required:
-            if key in query and query[key] == None:
-                raise ValueError
+            if key not in query or query[key] == None:
+                raise ValueError # TODO Make custom exception
         return
 
     def __aliasQuery(self, query):

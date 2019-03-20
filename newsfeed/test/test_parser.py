@@ -35,7 +35,6 @@ class TestMainParser(unittest.TestCase):
         expectedValues = ['42', 'ar', 'beer', 'technology', 'bbc-news']
         expectedDict = dict(zip(self.options, expectedValues))
 
-        # [--top, 42, --country, us, ... --source, bbc-news]
         testArgv = [arg for opt in zip(self.longopts, expectedValues) for arg in opt]
 
         self.assertEqual(expectedDict, parser.parse(testArgv))
