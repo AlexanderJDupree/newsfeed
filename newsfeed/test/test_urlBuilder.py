@@ -26,7 +26,7 @@ class TestURLString(unittest.TestCase):
     def testRequiredSegments(self):
         query = {'missing': 'required', 'segments' : 'fails'}
         url = URL(self.origin, self.headline_endpoint, required=['apiKey'])
-        self.assertRaises(Exception, url.encode, query)
+        self.assertRaises(ValueError, url.encode, query)
 
 
     ''' Sample valid News API query '''

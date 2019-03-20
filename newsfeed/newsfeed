@@ -27,7 +27,9 @@ def main(argv):
 
     print(query)
     print("News API response: {}".format(response['status']))
-
+    if response['status'] == 'ok':
+        for article in response['articles']:
+            print("\nTitle: {}".format(article['title']))
 
 if __name__ == '__main__':
     main(sys.argv[1:])
