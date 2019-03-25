@@ -16,7 +16,7 @@ class NewsAPI:
 
     NEWS_API      = "https://newsapi.org/v2/"
     TOP_HEADLINES = "top-headlines?"
-    API_KEY = os.environ['NEWS_API_KEY'] if 'NEWS_API_KEY' in os.environ.keys() else None
+    API_KEY = os.environ['NEWS_API_KEY'] if 'NEWS_API_KEY' in os.environ.keys() else ''
 
     ALIASES = { 'keyword' : 'q', 'top' : 'pageSize' }
 
@@ -28,9 +28,8 @@ class NewsAPI:
 
     @classmethod
     def request(cls, query):
-        url = cls.__buildURL(query)
-
-        response = requests.get(url)
+        # TODO exception handling
+        response = requests.get(cls.__buildURL(query))
 
         return response.json()
 

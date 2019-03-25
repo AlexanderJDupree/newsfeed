@@ -1,4 +1,5 @@
 #!/usr/bin/python
+
 '''
 usage: newsfeed.py [-h] [-t] [-c]
 
@@ -15,6 +16,7 @@ optional arguments:
 '''
 
 from os import sys
+from helpers import formatter
 from helpers import commandParser
 from helpers.urlBuilder import URL
 from helpers.newsAPI import NewsAPI
@@ -25,11 +27,10 @@ def main(argv):
 
     response = NewsAPI.request(query)
 
-    print(query)
-    print("News API response: {}".format(response['status']))
     if response['status'] == 'ok':
-        for article in response['articles']:
-            print("\nTitle: {}".format(article['title']))
+        formatter.display_news(response['articles'])
+    else:
+        formatter.display_error(response)
 
 if __name__ == '__main__':
     main(sys.argv[1:])
