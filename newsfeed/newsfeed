@@ -28,9 +28,9 @@ def main(argv):
     response = NewsAPI.request(query)
 
     if response['status'] == 'ok':
-        formatter.display_news(response['articles'])
+        formatter.displayNews(response['articles'])
     else:
-        formatter.display_error(response)
+        formatter.displayError(response)
 
 if __name__ == '__main__':
     main(sys.argv[1:])

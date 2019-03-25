@@ -8,28 +8,42 @@ Author: Alexander DuPree
 '''
 import textwrap
 
-def print_border():
-    print("{}".format('-' * 80))
+def _width():
+    return 80
 
-def format_into_string(article):
-    return "{}\n{}\n{}\n{}\n".format(article['title'], 
-                                     article['publishedAt'],
-                                     article['description'], 
-                                     article['url'])
+def _printBorder():
+    print("{}".format('-' * _width()))
 
-def display_news(articles):
+def _borderText(text):
+    lines = text.splitlines()
+    border = ['┌' + '─' * _width() + '┐']
+    for line in lines:
+        border.append('│' + (line + ' ' * _width())[:_width()] + '│')
+    border.append('└' + '─' * _width() + '┘')
+    return '\n'.join(border)
+
+def _formatIntoString(article):
+    header = "{}\nPublished At: {}\n".format(
+             textwrap.fill(textwrap.dedent(article['title']), width=_width()),
+             article['publishedAt'] # TODO format datetime string
+             )
+    body = "\n{}\n\n{}".format(
+             '\n'.join(textwrap.wrap(article['description'], width=_width())),
+             textwrap.fill(textwrap.dedent(article['url']), width=_width())
+             )
+    return header + '─' * _width() + body
+
+def displayNews(articles):
     for article in articles:
-        display_article(article)
-        print_border()
+        displayArticle(article)
     return
 
-def display_article(article):
-    textWrapper = textwrap.dedent(format_into_string(article)).strip()
-    print(textwrap.fill(textWrapper, width=80))
+def displayArticle(article):
+    print(_borderText(_formatIntoString(article)))
     return
 
-def display_error(response):
-    print("{}: {}\n{}".format(response['status'], 
-                              response['code'], 
-                              response['message']))
+def displayError(response):
+    header = "{}: {}\n".format(response['status'], response['code'])
+    body = "\n{}".format('\n'.join(textwrap.wrap(response['message'])))
+    print(_borderText(header + '─' * _width() + body))
     return
