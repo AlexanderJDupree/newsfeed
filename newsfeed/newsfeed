@@ -23,6 +23,8 @@ from helpers.newsAPI import NewsAPI
 
 def main(argv):
 
+    exit_code = 0
+
     query = commandParser.parse(argv)
 
     response = NewsAPI.request(query)
@@ -31,6 +33,17 @@ def main(argv):
         formatter.displayNews(response['articles'])
     else:
         formatter.displayError(response)
+        exit_code = 1
+
+    displayCredits()
+    return exit_code
+
+def displayCredits():
+    print("\n{0:^{3}}\n{1:^{3}}\n{2:^{3}}".format(
+        "Powered by News API (https://newsapi.org)", 
+        "Contribute to make newsfeed better!",
+        "https://github.com/AlexanderJDupree/newsfeed",
+        formatter._width()))
 
 if __name__ == '__main__':
     main(sys.argv[1:])
