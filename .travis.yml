@@ -4,8 +4,8 @@ services:
     - docker
 
 before_install:
-    - docker build -t newsfeed .
+    - docker build --build-arg news_api_key=${NEWS_API_KEY} -t newsfeed .
 
 script:
-    - docker run -e NEWS_API_KEY newsfeed -m unittest -v
+    - docker run newsfeed -m unittest -v
 
