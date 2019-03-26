@@ -82,8 +82,6 @@ class TestURLString(unittest.TestCase):
         self.assertEqual(url, expectedURL)
         return
 
-
-
 if __name__ == '__main__':
     unittest.main()
 

@@ -6,10 +6,11 @@ COPY . /app
 
 WORKDIR /app/newsfeed/
 
-ARG VER=0.0.1
+ARG news_api_key
+ENV NEWS_API_KEY=$news_api_key
 
 RUN pip install --trusted-host pypi.python.org -r /app/requirements.txt
 
 ENTRYPOINT ["python"]
-CMD ["newsfeed"]
+CMD ["newsfeed.py"]
 
