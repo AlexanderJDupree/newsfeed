@@ -1,7 +1,7 @@
 '''
 File: formatter.py
 
-Brief: Displays news API response in formatted console output
+Brief: Displays news API response in formatted card output
 
 Author: Alexander DuPree
 
