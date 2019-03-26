@@ -53,7 +53,7 @@ In the future I plan to ship **Newsfeed** with [pypi](https://pypi.org/). As wel
 
 ### Usage 
 
-Once **Newsfeed** is installed it can be used liek any other POSIX command line application. As an example, heres how you can get the top 2 stories in the US related to Apple:
+Once **Newsfeed** is installed it can be used like any other POSIX command line program. As an example, heres how you can get the top 2 stories in the US related to Apple:
 
 ```newsfeed -t 2 -k apple```
 
