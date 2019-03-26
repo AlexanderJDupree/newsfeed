@@ -51,7 +51,7 @@ def parse(argv):
     parser.add_argument( # TODO make sources accept variable number of args
             '-s', '--sources',
             metavar='',
-            help="Specify a <SOURCE> for news. I.E. cnn, bbc-news"
+            help="(NOT IMPLEMENTED IN v1.0.0)"
             )
 
     # Returns a dict object
