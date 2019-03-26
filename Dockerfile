@@ -12,5 +12,5 @@ ENV NEWS_API_KEY=$news_api_key
 RUN pip install --trusted-host pypi.python.org -r /app/requirements.txt
 
 ENTRYPOINT ["python"]
-CMD ["newsfeed"]
+CMD ["newsfeed.py"]
 
