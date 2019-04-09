@@ -10,12 +10,12 @@ Author: Alexander DuPree
 
 from urllib import parse
 
-''' 
-URL class provides basic methods to build a url request by providing required 
-components in the form of a dict object. Optionally required compononets can be 
-specified during construction as well.
-'''
 class URL:
+    ''' 
+    URL class provides basic methods to build a url request by providing required 
+    components in the form of a dict object. Optionally required compononets can be 
+    specified during construction as well.
+    '''
 
     def __init__(self, origin, endpoint, required=set(), query=dict(), aliases=dict()):
         self.origin   = origin
