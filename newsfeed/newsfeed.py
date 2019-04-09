@@ -53,7 +53,7 @@ def displayNoResultsFound(query):
 
 def displayCredits():
     print("\n{0:^{4}}\n{1:^{4}}\n{2:^{4}}\n{3:^{4}}".format(
-        "Powered by News API (https://newsapi.org)", 
+        "Powered by News API (https://newsapi.org)",
         "Contribute to make newsfeed better!",
         "https://github.com/AlexanderJDupree/newsfeed",
         __version__,
