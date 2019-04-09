@@ -1,11 +1,8 @@
 '''
 File: newsApi.py
-
-Brief: newsAPI.py handles https requests to the News API server and returns a 
+Brief: newsAPI.py handles https requests to the News API server and returns a
        json object on successfull requests
-
 Author: Alexander DuPree
-
 '''
 
 import os
