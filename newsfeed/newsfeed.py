@@ -17,12 +17,11 @@ optional arguments:
 
 '''
 
+__version__ = 'v1.0.0'
+
 from os import sys
 from helpers import formatter, commandParser
-from helpers.urlBuilder import URL
 from helpers.newsAPI import NewsAPI
-
-__version__ = 'v1.0.0'
 
 def main(argv):
 
