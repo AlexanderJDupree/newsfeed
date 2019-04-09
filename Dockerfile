@@ -1,7 +1,5 @@
 FROM python:3.7-slim
 
-MAINTAINER AlexanderJDupree "https://github.com/AlexanderJDupree"
-
 COPY . /app
 
 WORKDIR /app/newsfeed/
