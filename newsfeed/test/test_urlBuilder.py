@@ -22,15 +22,15 @@ class TestURLString(unittest.TestCase):
     required = ['apiKey']
 
 
-    ''' URL requires origin, endpoint, and anything specified in required '''
     def testRequiredSegments(self):
+        ''' URL requires origin, endpoint, and anything specified in required '''
         query = {'missing': 'required', 'segments' : 'fails'}
         url = URL(self.origin, self.headline_endpoint, required=['apiKey'])
         self.assertRaises(ValueError, url.encode, query)
 
 
-    ''' Sample valid News API query '''
     def testTopHeadlineRequest(self):
+        ''' Sample valid News API query '''
 
         payload = ['us', 'harambe', 'business', 'API_KEY']
 
@@ -48,8 +48,8 @@ class TestURLString(unittest.TestCase):
         self.assertEqual(url, expectedURL)
         return
 
-    ''' Default query from newsfeed app, contains None values. '''
     def testURLStripsNoneValues(self):
+        ''' Default query from newsfeed app, contains None values. '''
         query = { 'top': '10', 'country': 'us', 'keyword': None, 
                 'category': None, 'sources': None, 'apiKey': 'API_KEY' }
 
@@ -63,8 +63,8 @@ class TestURLString(unittest.TestCase):
         url = URL(self.origin, self.headline_endpoint, query=query, aliases=self.aliases)
         self.assertEqual(url.url, expectedURL)
 
-    ''' Appending query segments to constructed URL '''
     def testURLAppend(self):
+        ''' Appending query segments to constructed URL '''
         payload = ['us', 'harambe', 'business']
 
         query = dict(zip(self.keys, payload))
